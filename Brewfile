@@ -29,6 +29,7 @@ cask 'telegram'
 cask 'textmate'
 cask 'torbrowser'
 cask 'transmit'
+cask 'transmission'
 cask 'vlc'
 cask 'zoomus'
 
