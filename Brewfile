@@ -39,7 +39,6 @@ mas 'Cardhop', id: 1290358394
 mas 'Cinch', id: 412529613
 mas 'Classic Color Meter', id: 451640037
 mas 'Fantastical 2', id: 975937182
-mas 'Icon slate', id: 439697913
 mas 'JPEGmini', id: 498944723
 mas 'Keynote', id: 409183694
 mas 'Marked 2', id: 890031187
