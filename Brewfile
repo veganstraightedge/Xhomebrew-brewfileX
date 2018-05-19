@@ -15,14 +15,12 @@ cask 'backblaze'
 cask 'dropbox'
 cask 'firefox'
 cask 'flickr-uploadr'
-cask 'flux'
 cask 'fuzzyclock'
 cask 'google-chrome'
 cask 'grandperspective'
 cask 'imageoptim'
 cask 'kindle'
 cask 'signal'
-cask 'slack'
 cask 'sketch'
 cask 'slimbatterymonitor'
 cask 'spillo'
@@ -50,6 +48,7 @@ mas 'Pages', id: 409201541
 mas 'PNG Compressor', id: 434886325
 mas 'Reeder 3', id: 880001334
 mas 'Shazam', id: 897118787
+mas 'Slack', id: 803453959
 mas 'Slugline', id: 553754186
 mas 'Stuffit Expander', id: 405580712
 mas 'Things 3', id: 904280696
