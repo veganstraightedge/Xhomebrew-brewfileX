@@ -3,6 +3,7 @@ tap 'homebrew/services'
 
 brew 'chruby'
 brew 'ffmpeg'
+brew 'git'
 brew 'hub'
 brew 'mas'
 brew 'postgresql'
