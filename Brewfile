@@ -56,3 +56,4 @@ mas 'Things 3', id: 904280696
 mas 'Tweetbot', id: 557168941
 mas 'Vimeo', id: 1356686763
 mas 'Monosnap', id: 540348655
+mas 'StopTheMadness', id: 1376402589
