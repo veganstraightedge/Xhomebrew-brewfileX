@@ -1,5 +1,5 @@
-tap 'homebrew/cask-cask'
 tap 'homebrew/services'
+tap 'homebrew/cask'
 
 brew 'chruby'
 brew 'ffmpeg'
