@@ -32,7 +32,7 @@ cask 'transmit'
 cask 'transmission'
 cask 'vlc'
 
-mas 'Acorn',               id: 1233861775
+mas 'Acorn',               id: 1547371478
 mas 'Cinch',               id: 412529613
 mas 'Classic Color Meter', id: 451640037
 mas 'Fantastical 2',       id: 975937182
