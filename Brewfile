@@ -31,7 +31,6 @@ cask 'tor-browser'
 cask 'transmit'
 cask 'transmission'
 cask 'vlc'
-cask 'zoomus'
 
 mas 'Acorn',               id: 1233861775
 mas 'Cinch',               id: 412529613
