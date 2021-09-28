@@ -10,8 +10,6 @@ brew 'postgresql'
 brew 'ruby-install'
 brew 'youtube-dl'
 
-cask '1password'
-cask 'atom'
 cask 'dropbox'
 cask 'firefox'
 cask 'flickr-uploadr'
@@ -30,6 +28,7 @@ cask 'transmit'
 cask 'transmission'
 cask 'vlc'
 
+mas '1Password',           id: 1333542190
 mas 'Acorn 7',             id: 1547371478
 mas 'Cinch',               id: 412529613
 mas 'Fantastical 2',       id: 975937182
