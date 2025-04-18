@@ -19,7 +19,7 @@ touch $SHELL_CONFIG
 
 
 # Ask the user where they want their RSA key stored
-read -p "==> Create SSH keys (RSA)"
+echo "==> Create SSH keys (RSA)"
 rsa_path=~/.ssh/id_rsa
 rsa_path=${rsa_path:-$default_rsa_path}
 
