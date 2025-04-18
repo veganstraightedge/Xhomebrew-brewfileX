@@ -135,6 +135,7 @@ echo
 # Ensure that the Postgresql service is running
 echo "==> Start Postgres service…"
 brew reinstall postgresql@17
+brew link postgresql@17
 echo 'export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"' >> ~/.zshrc
 brew services restart postgresql@17
 
