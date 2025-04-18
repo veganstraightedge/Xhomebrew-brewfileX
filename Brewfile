@@ -3,10 +3,6 @@
 # brew tap ...
 tap "buo/cask-upgrade"
 tap "heroku/brew"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/core"
-tap "homebrew/services"
 
 # brew is for Terminal/CLI libraries/software
 # brew install ...
