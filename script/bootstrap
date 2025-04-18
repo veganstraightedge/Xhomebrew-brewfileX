@@ -168,7 +168,8 @@ gem install bundler
 
 # Make 'locate` database
 echo "==> Start making 'locate' database"
-sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+# TODO: why does this? #=> Load failed: 5: Input/output error
+# sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
 
 # Show ~/Library folder
 echo '==> Unhiding home Library folder'
