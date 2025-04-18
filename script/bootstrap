@@ -167,6 +167,11 @@ gem install bundler
 echo '==> Start making "locate" database'
 sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
 
+# Show ~/Library folder
+echo '==> Unhiding home Library folder'
+chflags nohidden ~/Library
+killall Finder
+
 # All done!
 echo "==> SUCCESS! Your development environment is now bootstrapped!"
 echo
