@@ -163,6 +163,10 @@ echo '==> Installing latest RubyGems CLI and Bundler…'
 gem update --system
 gem install bundler
 
+# Make 'locate` database
+echo '==> Start making "locate" database'
+sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+
 # All done!
 echo "==> SUCCESS! Your development environment is now bootstrapped!"
 echo
