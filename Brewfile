@@ -21,10 +21,10 @@ brew "yt-dlp"
 brew "heroku/brew/heroku"
 brew "imageoptim-cli"
 brew "exif"
+brew "exiftool"
 
 # cask is for macOS/GUI software installed from the internet
 # brew install --cask firefox
-cask "exiftool"
 cask "applite"
 cask "betterdisplay"
 cask "betterzip"
