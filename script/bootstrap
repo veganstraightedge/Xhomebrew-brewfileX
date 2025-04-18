@@ -6,7 +6,7 @@
 set -e
 
 # Work from the user's `Downloads` directory
-cd '$HOME/Downloads'
+cd "$HOME/Downloads"
 
 echo
 echo '==> Running script/bootstrap…'
