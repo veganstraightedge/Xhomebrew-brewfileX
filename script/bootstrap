@@ -158,6 +158,11 @@ else
 fi
 echo
 
+# Ruby dev setup
+echo '==> Installing latest RubyGems CLI and Bundler…'
+gem update --system
+gem install bundler
+
 # All done!
 echo "==> SUCCESS! Your development environment is now bootstrapped!"
 echo
