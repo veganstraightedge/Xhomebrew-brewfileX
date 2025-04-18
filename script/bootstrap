@@ -1,0 +1,160 @@
+#!/bin/sh
+
+# script/bootstrap: Setup a new laptop
+
+# Exit script if any commands return errors (if they exit with non-zero)
+set -e
+
+# Work from the user's `Downloads` directory
+cd "$HOME/Downloads"
+
+echo
+echo "==> Running script/bootstrap…"
+echo
+
+# Create .zshrc in $HOME directory
+echo "==> Create ~/.zshrc"
+SHELL_CONFIG="$HOME/.zshrc"
+touch $SHELL_CONFIG
+
+
+# Ask the user where they want their RSA key stored
+read -p "==> Create SSH keys (RSA)"
+rsa_path=~/.ssh/id_rsa
+rsa_path=${rsa_path:-$default_rsa_path}
+
+# Check if RSA SSH keys already exist
+if [[ -f "$rsa_path" ]]; then
+  echo "==> Found SSH key in $rsa_path"
+  echo
+else
+  # Setup Git/GitHub
+  echo "==> Setup Git/GitHub"
+  github_email="veganstraightedge@gmail.com"
+
+  # From: https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+  echo "==> Generating SSH key for $github_email …"
+  ssh-keygen -t rsa -b 4096 -C "$github_email"
+  echo
+
+  echo "==> Starting ssh-agent in the background…"
+  eval "$(ssh-agent -s)"
+  echo
+
+  # Ensure that SSH config file exists
+  touch ~/.ssh/config
+
+  # Add SSH key loading to SSH config
+  echo "==> Adding SSH config to automatically load SSH keys"
+  grep -qF -- "IdentityFile $rsa_path" ~/.ssh/config || echo "\n\nHost *\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile $rsa_path\n\n" >> ~/.ssh/config
+  echo
+
+  # Add SSH private key to the ssh-agent and store passphrase in your keychain
+  echo "==> Adding SSH key to ssh-agent and storing passphrase in your keychain"
+  ssh-add -K $rsa_path
+  echo
+
+  echo "==> Your browser will be opened to a GitHub SSH Keys settings page…"
+  echo "==> You’ll need to paste into the 'Key' field, then click the 'Add SSK Key' button…"
+  echo
+
+  echo "==> Press any key to open your browser…"
+  read
+
+  echo "==> Opening your browser to a GitHub settings page…"
+  open https://github.com/settings/ssh/new
+  echo
+
+  echo "==> Press any key to continue after you have saved your SSH key on GitHub…"
+  read
+  echo
+fi
+
+echo "==> Copying your public SSH key to clipboard…"
+pbcopy < $rsa_path
+echo
+
+# Download strap.sh and run it
+echo "==> Downloading strap.sh script from github.com/MikeMcQuaid/strap…"
+curl https://raw.githubusercontent.com/MikeMcQuaid/strap/master/strap.sh -o strap.sh
+echo
+
+echo "==> Strapping your Mac…"
+sh strap.sh
+echo
+
+# Delete strap.sh
+echo "==> Deleting strap.sh script…"
+rm strap.sh
+echo
+
+# Set the Ruby version, same as the .ruby-version file
+ruby_version=`curl https://raw.githubusercontent.com/veganstraightedge/dotfiles/main/.ruby-version`
+
+echo "export PATH=/opt/homebrew/bin:$PATH" >> $SHELL_CONFIG
+
+# Update Homebrew and ruby-install to get the latest list of Rubies
+brew update
+brew upgrade ruby-install || brew install ruby-install
+brew upgrade chruby       || brew install chruby
+
+# Install Ruby version from .ruby-version file
+echo "==> Installing Ruby: $ruby_version …"
+ruby-install -s $ruby_version
+echo
+
+# Add current ruby-version to the home directory
+echo $ruby_version > ~/.ruby-version
+
+# Add chruby’s auto-switching to .zshrc, unless its already in there
+# Then, re-source the .zshrc for current user
+echo "==> Adding Ruby version auto-switching to $SHELL_CONFIG"
+
+echo "==> Initializing rbenv…"
+# TODO
+# grep -qF -- 'eval "$(rbenv init -)"' $SHELL_CONFIG || echo '\n# rbenv ruby version auto-switching - inserted by @veganstraightedge\neval "$(rbenv init -)"' >> $SHELL_CONFIG
+echo
+
+# Install Bundler
+echo "==> Installing the Bundler Ruby gem…"
+gem install bundler
+echo
+
+echo "==> Running veganstraightedge/dotfiles Brewfile to install remaining software…"
+curl https://raw.githubusercontent.com/veganstraightedge/dotfiles/main/Brewfile | brew bundle --file=-
+
+# Cleanup Homebrew packages
+brew cleanup
+echo
+
+# Delete any previous Postgres data directory
+echo "==> Deleting Postgres data directory…"
+rm -rf /opt/homebrew/var/postgres
+echo
+
+# Ensure that the Postgresql service is running
+echo "==> Start Postgres service…"
+brew services restart postgresql@17
+
+# Wait until PostgreSQL has started up and is ready
+while ! pg_isready -q
+do
+  echo `pg_isready`
+  echo "==> $(date) - waiting for database to start"
+  sleep 1
+done
+
+# Check if a Postgres superuser has been created
+db_user_created=$(psql postgres -t -c "SELECT true FROM pg_roles WHERE rolname = 'postgres'")
+
+if [[ $db_user_created=="t" ]]; then
+  echo "==> A superuser named 'postgres' already exists"
+else
+  echo '==> Creating PostgresQL superuser, named: "postgres"…'
+  psql postgres -c "CREATE USER postgres SUPERUSER";
+fi
+echo
+
+# All done!
+echo "==> SUCCESS! Your development environment is now bootstrapped!"
+echo
