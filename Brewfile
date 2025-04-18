@@ -40,6 +40,7 @@ cask "imageoptim"
 cask "netnewswire"
 cask "obsidian"
 cask "plex"
+cask "rectangle"
 cask "sf-symbols"
 cask "signal"
 cask "sketch" # replace with my older version
