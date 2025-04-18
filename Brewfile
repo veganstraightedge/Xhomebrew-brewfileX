@@ -54,7 +54,6 @@ cask "zed"
 cask "zoom"
 
 # These are Installable as casks, but I prefer mas for auto-updates
-# Divvy
 # GrandPerspective
 # Kiwix
 # LocalSend
