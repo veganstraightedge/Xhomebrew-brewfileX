@@ -1,0 +1,94 @@
+// goes in ~/.config/zed/settings.json
+
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet-latest"
+    },
+    "version": "2"
+  },
+  "features": {
+    "edit_prediction_provider": "zed",
+    "edit_prediction_provider": "copilot"
+  },
+
+  "autosave": "on_focus_change",
+  "base_keymap": "TextMate",
+
+  "buffer_font_family": "Monaspace Neon",
+  "buffer_font_features": {
+    "calt": true,
+    "liga": true,
+    "ss01": true,
+    "ss02": true,
+    "ss03": true,
+    "ss04": true,
+    "ss05": true,
+    "ss06": true,
+    "ss07": true,
+    "ss08": true,
+    "ss09": true
+  },
+  "buffer_font_size": 18,
+
+  "preferred_line_length": 120,
+  "soft_wrap": "none",
+  "tab_size": 2,
+
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Cobalt2"
+  },
+
+  "lsp": {
+    "solargraph": {
+      "initialization_options": {
+        "diagnostics": true,
+        "formatting": true
+      }
+    }
+  },
+
+  "terminal": {
+    "option_as_meta": true
+  },
+
+  "semantic_index": {
+    "enabled": true
+  },
+
+  "language_overrides": {
+    "Ruby": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "bundle",
+          "arguments": ["exec", "rubocop", "--fail-level", "error", "--autocorrect-all", "--stdin", "FILE", "--stderr"]
+        }
+      }
+    },
+
+    "Markdown": {
+      "soft_wrap": "preferred_line_length",
+      "preferred_line_length": 80
+    }
+  }
+}

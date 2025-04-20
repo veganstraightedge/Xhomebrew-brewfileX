@@ -1,0 +1,86 @@
+# Settings
+# Appearance
+theme                 = 06CD1FB2-A00A-4F8C-97B2-60E131980454
+fontName              = "Inconsolata LGC"
+fontSize              = 18
+tabSize               = 2
+showInvisibles        = true
+softTabs              = true
+softWrap              = false
+wrapColumn            = 0
+
+# Search
+myExtraExcludes       = "log,vendor,tmp"
+excludeInFileChooser  = "{$excludeInFileChooser,$myExtraExcludes}"
+excludeInFolderSearch = "{$excludeInFolderSearch,$myExtraExcludes,node_modules}"
+fileBrowserGlob       = "{.*,*}"
+exclude               = "{.git,{o,pyc},vendor/gems,tmp,log,cache,Icon\r,CVS,_darcs,_MTN,\{arch\},blib,*\~.nib}"
+include               = "{.*,*}"
+includeInFolderSearch = "{.*,*}"
+spellChecking         = true
+spellingLanguage      = "en"
+
+# Variables
+TM_RUBY = "/Users/s/.rbenv/versions/3.2.2/bin/ruby"
+TM_GIT  = "/usr/local/bin/git"
+
+# Save all files when focus is lost
+saveOnBlur = true
+
+# Wrap lines in plaintext files
+[ *.txt ]
+softWrap = true
+
+# Git
+[ .git/COMMIT_EDITMSG ]
+softWrap = true
+
+[ attr.file.unknown-type ]
+fileType = text.plain
+
+[ attr.untitled ]
+fileType = source.ruby.rails
+
+[ *.rb ]
+fileType = source.ruby.rails
+
+[ source.ruby ]
+showInvisibles = true
+softWrap       = false
+
+[ text ]
+softTabs = true
+softWrap = false
+tabSize  = 2
+
+[ text.plain ]
+softTabs = true
+softWrap = false
+tabSize  = 2
+
+[ *.md ]
+fileType = text.html.markdown
+
+[ text.html.markdown ]
+softWrap   = true
+wrapColumn = "Use Window Frame"
+softTabs   = true
+tabSize    = 2
+
+[ *.csv ]
+fileType = text.tabular.csv
+
+[ *.svg ]
+fileType = text.xml
+
+[ *.js ]
+fileType = source.js.jquery
+
+[ *.mediawiki ]
+fileType = text.html.mediawiki
+
+[ "{Capfile,Gemfile,Gemfile.lock,Guardfile,Rakefile}" ]
+fileType = source.ruby
+
+[ Procfile ]
+fileType = source.yaml
