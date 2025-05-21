@@ -113,10 +113,14 @@ echo $ruby_version > ~/.ruby-version
 # Then, re-source the .zshrc for current user
 echo '==> Adding Ruby version auto-switching to $SHELL_CONFIG'
 
-echo '==> Initializing chruby…'
-# TODO add chruby to .zshrc
-# grep -qF -- 'eval "$(rbenv init -)"' $SHELL_CONFIG || echo '\n# rbenv ruby version auto-switching - inserted by @veganstraightedge\neval "$(rbenv init -)"' >> $SHELL_CONFIG
-echo
+# echo '==> Initializing chruby…'
+# # TODO add these lines to .zshrc
+# # source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+# # source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+# # ...using this strategy below, i.e. don't re-add it if it's already there!
+# # TODO add chruby to .zshrc
+# # grep -qF -- 'eval "$(rbenv init -)"' $SHELL_CONFIG || echo '\n# rbenv ruby version auto-switching - inserted by @veganstraightedge\neval "$(rbenv init -)"' >> $SHELL_CONFIG
+# echo
 
 # Install Bundler
 echo '==> Installing the Bundler Ruby gem…'
